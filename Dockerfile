@@ -1,8 +1,7 @@
 FROM python:3.7
-MAINTAINER Josip Janzic <josip@jjanzic.com>
 
 RUN apt-get update \
-    && apt-get install -y \
+    && apt-get install --no-install-recommends -y \
         build-essential \
         cmake \
         git \
@@ -21,6 +20,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install numpy
+RUN pip install imutils
 
 WORKDIR /
 ENV OPENCV_VERSION="4.1.1"
